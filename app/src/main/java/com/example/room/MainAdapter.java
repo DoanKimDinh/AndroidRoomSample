@@ -94,8 +94,10 @@ public class MainAdapter
                         dataList.clear();
                         dataList.addAll(database.mainDao().getAll());
                         notifyDataSetChanged();
+                        MainActivity.ten();
                     }
                 });
+
             }
         });
 
@@ -107,10 +109,15 @@ public class MainAdapter
                 //Delete text from database
                 database.mainDao().delete(d);
                 //Notify when data is deleted
+
                 int position = holder.getAdapterPosition();
                 dataList.remove(position);
-                notifyItemChanged(position);
-                notifyItemRangeChanged(position, dataList.size());
+
+                notifyDataSetChanged();
+//                notifyItemChanged(position);
+//                notifyItemRangeChanged(position, dataList.size());
+
+                MainActivity.ten();
             }
         });
 
